@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo 2</title>
+	
+</head>
+<body>
+	<div>
+		<input type="text" ng-model="dato">
+		<p>{{dato}}</p>
+		<input type="button" value="hola" ng-click="dato='hola'">
+		<!-- Podemos hacer que interprete expresiones dentro  -->
+		<h2>{{12/7 | number:5}}</h2>
+	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+</body>
+</html>

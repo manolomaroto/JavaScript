@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Hola Mundo</title>
+	
+</head>
+<body>
+	<h1>Hola mundo</h1>
+	<input type="text" ng-model="escribir">
+	<h2>{{escribir}} - {{campoSelect}}</h2>
+	<select ng-model="campoSelect">
+		<option value="uno">1</option>
+		<option value="dos">2</option>
+	</select>
+	
+	<input type="button" value="Pulsa aqui" ng-click="escribir='Ha,ha'">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	</script>
+</body>
+</html>
