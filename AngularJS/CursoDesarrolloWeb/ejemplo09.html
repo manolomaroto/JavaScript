@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="apiApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Plantilla</title>
+	<style type="text/css">
+		body{
+			font-family: sans-serif;
+		}
+		li{
+			font-size: .8em;
+			margin-bottom: 10px;
+			padding: 10px;
+		}
+		li span{
+			font-weight: bold;
+			display: block;
+			font-size: 1.2em;
+		}
+		aside{
+			width: 200px;
+			float: right;
+			padding: 20px;
+			display: table-cell;
+		}
+		aside h2{
+			margin-bottom: 3px;
+		}
+		section{
+			display: table-cell;
+		}
+		li .even{
+			background-color: #d5d5d5;
+		}
+		li .odd{
+			background-color: #d5d5ff;
+		}
+	</style>
+</head>
+<body>
+	<div ng-controller="apiCtrl as vm">
+		<h1>Prueba AJAX con JSONP</h1>
+		<p>
+			Busca cerveza <input type="text" ng-model="vm.nombre">
+			<input type="button" ng-click="vm.buscarCervezas()" value="Buscar">
+		</p>
+		<aside>
+			<h2>Filtra:</h2>
+			<input type="text" ng-model="vm.filtrocliente">
+			<h2>Orden</h2>
+			<p>
+				<button ng-click="vm.orden=false">Alfabetico</button>
+				<button ng-click="vm.orden=true">Contrario</button>
+			</p>
+			<p>
+				<input type="radio" name="campo" ng.model="vm.campo" value="name">Nombre
+				<br>
+				<input type="radio" name="campo" ng.model="vm.campo" value="description">Descripcion
+			</p>
+		</aside>
+		<section>
+			<ul>
+				<li ng-repeat="cerveza in vm.cervezas | filter:vm.filtrocliente | orderBy:vm.campo.vm.orden" ng-class="{even: $even, odd: $odd}" >
+					<span>{{$index + 1}}. - {{cerveza.name}},</span> {{cerveza.description}}
+				</li>
+			</ul>
+		</section>
+		
+	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script type="text/javascript">
+	angular.module("apiApp",[])
+		.controller("apiCtrl",controladorPrincipal);
+
+	function controladorPrincipal($scope,$http){
+		var vm = this;
+
+		vm.orden = false;
+		vm.campo = "name";
+
+		var url = "http://api.openbeerdatabase.com/v1/beers.json?callback=JSON_CALLBACK";
+		if(vm.nombre){
+			url += "$query=" + vm.nombre;
+		}
+
+		vm.buscarCervezas = function(){
+			$http.jsonp(url).success(function(respuesta){
+				console.log("res:",respuesta)
+				vm.respuestas = respuesta.beers;
+			})
+		}
+	}
+	</script>
+</body>
+</html>

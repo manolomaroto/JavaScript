@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="pruebaApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Plantilla</title>
+	
+</head>
+<body>
+	<!-- Este código va con el primer controller
+	 <div ng-controller="pruebaAppctrl">
+		{{algo}}
+	</div> -->
+
+	<!-- Este con el segundo, hay que indicar un alias sobre el que aplicar la variable creada en el controlador -->
+	<div ng-controller="pruebaAppctrl as vm">
+		{{vm.algo}}
+	</div>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script type="text/javascript">
+	//Esta opcion usa $scope para inyectar al scope y lo pone en un array para evitar que los minificadores lo compriman y no funcione correctamente
+	/*angular.module('pruebaApp',[])
+	.controller('pruebaAppctrl',['$scope',function($scope){
+		$scope.algo = "Controller muy simple, yeah";
+	}]);*/
+
+	//Ahora lo hace con la variable this para contextualizarla
+	angular.module('pruebaApp',[])
+		.controller('pruebaAppctrl', function(){
+			this.algo="Ahora uso this, haha";
+		})
+	</script>
+</body>
+</html>

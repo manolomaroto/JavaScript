@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<!-- Ejemplo del uso de directivas de checkbox ng-model, ng-true-value ng-false-value y ng-cnange -->
+<html lang="es" ng-app="checkboxApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplos checkbox</title>
+	<style>
+		.claro{
+			background-color: #ccc;
+		}
+		.oscuro{
+			background-color: #777;
+		}
+		.verdadero{
+			background-color: #0045fa;
+		}
+		.falso{
+			background-color: #fa4500;
+		}
+	</style>
+</head>
+<body ng-controller="checkboxCtrl as vm">
+	<p ng.class="vm.activo">
+	<input type="checkbox" ng-model="vm.activo" ng-change="vm.avisar()" >
+	Este campo es vm.activo y su valor en el modelo es {{vm.activo}}
+	</p>
+	<p ng-class="vm.clarooscuro">
+	<input type="checkbox" ng-model="vm.clarooscuro" ng-true-value="'claro'" ng-false-value="'oscuro'" >
+	Este campo tiene el valor modificado. Ahora tiene el valor {{ vm.clarooscuro}}
+	</p>
+	<p>
+		<input type="button" ng-click="vm.activo=true" value="Pulsa para cambiar el valor del primer checkbox a true">
+		Observaras que aunque el estado pueda cambiar, no se invoca el ng-change del primer checkbox
+	</p>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script type="text/javascript">
+	var app = angular.module("checkboxApp",[]);
+	app.controller("checkboxCtrl", function(){
+		var vm = this;
+		//vm.clarooscuro='claro';
+		// podriamos inicializar valores del modelo
+		//vm.activo = false;
+		vm.avisar = function(){
+			console.log("Cambie");
+		}
+	})
+	</script>
+</body>
+</html>
