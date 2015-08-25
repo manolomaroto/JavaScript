@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Convertidor</title>
+	<script type="text/javascript">
+	function convertir(){
+		var pesetas, euros;
+		pesetas = document.getElementById("pesetas").value;
+
+		euros = pesetas / 166.86;
+
+		document.getElementById("resultado").innerHTML = pesetas + " pesetas son " + euros.toFixed(2) + " euros.";
+	}
+	</script>
+</head>
+<body>
+	<h1>Convertidor de pesetas</h1>
+	<p>Introduce la cantidad de pesetas <input type="text" id="pesetas"><input type="button" onclick="convertir()" value="Convertir"></p>
+	<p id="resultado"></p>
+	
+</body>
+</html>

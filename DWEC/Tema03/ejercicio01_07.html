@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Saludo con hora y fecha</title>
+	<script type="text/javascript">
+	function hora(){
+		var horaActual = new Date();
+
+		var hora,minutos,segundos,horaCompleta,mes,dia,anyo,fechaCompleta;
+
+		hora = horaActual.getHours();
+		minutos = horaActual.getMinutes();
+		segundos = horaActual.getSeconds();
+		mes = horaActual.getMonth() + 1;
+		dia = horaActual.getDate();
+		anyo = horaActual.getFullYear();
+
+		if (minutos < 10){
+			minutos = "0" + minutos;
+		}
+		if(segundos < 10){
+			segundos = "0" + segundos;
+		}
+
+		if(dia < 10){
+			dia = "0" + dia;
+		}
+
+		if(mes< 10){
+			mes = "0" + mes;
+		}
+		
+		horaCompleta = hora +":"+ minutos + ":" + segundos;
+		document.getElementById("hora").innerHTML = horaCompleta;
+		fechaCompleta = dia + "/" + (mes) + "/" + anyo;
+		document.getElementById("fecha").innerHTML = fechaCompleta; 
+	}
+	</script>
+</head>
+<body onload="hora()">
+	<h1>Hora: <span id="hora"></span></h1>
+	<h1>Fecha: <span id="fecha"></span></h1>
+</body>
+</html>

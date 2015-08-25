@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Saludo</title>
+	<script type="text/javascript">
+	function saludo(){
+		var horadelDia ="";
+		var nombre = document.getElementById("nombre").value;
+		var hora = new Date();
+		if(hora.getHours() <= 12 && hora.getHours() >= 6){
+			horadelDia= "Buenos días";
+		}else if(hora.getHours() <= 20){
+			horadelDia = "Buenas tardes";
+		}else{
+			horadelDia = "Buenas Noches";
+		}
+
+		document.getElementById("saludo").innerHTML = horadelDia + ", " + nombre;
+	}
+	</script>
+	<style type="text/css">
+		#saludo{
+			font-family: "Comic Sans", sans-serif;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Saludo personalizado</h1>
+	
+	<p>Escribe tu nombre: <input type="text" id="nombre">
+	<input type="button" value="Pulsa" onclick="saludo()">
+	</p>
+
+	<p id="saludo"></p>
+	
+</body>
+</html>

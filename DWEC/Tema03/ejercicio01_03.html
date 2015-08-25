@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Longitud de una cadena</title>
+	<script type="text/javascript">
+	function calcular(){
+		var resultado = 0;
+		var texto = document.getElementById("texto").value;
+		resultado = texto.length;
+		document.getElementById("resultado").innerHTML = resultado;
+	}
+	</script>
+</head>
+<body>
+	<h3>Calcula la longitud</h3>
+	<input type="text" id="texto">
+	<input type="button" onclick="calcular()" value="Calcular">
+<p>Longitud: <span id="resultado"></span></p>
+</body>
+</html>

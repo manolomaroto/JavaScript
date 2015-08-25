@@ -70,11 +70,11 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 	<script type="text/javascript">
 	angular.module("apiApp",[])
-		.controller("apiCtrl",controladorPrincipal);
+		.controller("apiCtrl",['$http',controladorPrincipal]);
 
 	function controladorPrincipal($scope,$http){
 		var vm = this;
-
+		
 		vm.orden = false;
 		vm.campo = "name";
 

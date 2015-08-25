@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fecha de ayer</title>
+	<script type="text/javascript">
+	function ayer(){
+		var unDia = 1000*60*60*24;
+
+		var hoy = new Date();
+
+		var ayer = new Date(hoy.getTime() - unDia);
+
+		document.getElementById("ayer").innerHTML = ayer.toDateString();
+
+	}
+	</script>
+</head>
+<body onload="ayer()">
+	<p>Ayer fue: <span id="ayer"></span></p>
+	
+</body>
+</html>

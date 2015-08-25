@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Saludo con hora</title>
+	<script type="text/javascript">
+	function hora(){
+		var horaActual = new Date();
+
+		var hora,minutos,segundos,horaCompleta;
+
+		hora = horaActual.getHours();
+		minutos = horaActual.getMinutes();
+		segundos = horaActual.getSeconds();
+
+		if (minutos < 10){
+			minutos = "0" + minutos;
+		}
+		if(segundos < 10){
+			segundos = "0" + segundos;
+		}
+		
+		horaCompleta = hora +":"+ minutos + ":" + segundos;
+		document.getElementById("hora").innerHTML = horaCompleta;
+	}
+	</script>
+</head>
+<body onload="hora()">
+	<h1>Hola, son las <span id="hora"></span></h1>
+</body>
+</html>

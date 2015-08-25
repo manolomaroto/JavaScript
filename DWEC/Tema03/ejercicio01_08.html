@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Palindromo</title>
+	<script type="text/javascript">
+	function palindromo(){
+		var palabra, palindromo,indice,longitud;
+		palindromo = true;
+
+
+
+		palabra = document.getElementById("palabra").value;
+		indice = palabra.length - 1;
+		longitud = palabra.length - 1;
+		
+		for (i = 0; i <= longitud; i++){
+			if(palabra.charAt(longitud-i) == palabra.charAt(i)){
+
+			}else{
+				palindromo = false;
+				break
+			}
+			
+		}
+
+		if(!palindromo){
+			document.getElementById("resultado").innerHTML = palabra + " no es un palindromo";
+		}else{
+			document.getElementById("resultado").innerHTML = palabra + " es un palindromo";
+		}
+
+
+		
+		
+		
+		
+	}
+	</script>
+</head>
+<body>
+	<h3>Palindromero</h3>
+	<p>Escribe una palabra <input type="text" id="palabra"><br><input type="button" value="Pulsa" onclick="palindromo()"></p>
+	<p id="resultado"></p>
+
+</body>
+</html>

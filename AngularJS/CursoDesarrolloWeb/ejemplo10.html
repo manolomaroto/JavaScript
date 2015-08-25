@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+	<meta charset="UTF-8">
+	<title>Paises con AJAX</title>
+	<style>
+		body{ font-family: sans-serif;}
+		li{
+			font-size: 0.8em;
+			list-style: none;
+			padding: 5px;
+		}
+		li span{
+			font-weight: bold;
+		}
+		li.even{
+			background-color: #d5d5d5;
+		}
+		li.odd{
+			background-color: #fff;
+		}
+
+	</style>
+</head>
+<body>
+	<div ng-app="apiApp" ng-controller="apiAppCtrl as vm">
+		<h1>Pruebo AJAX</h1>
+		<p>
+			Selecciona:
+			<select ng-model="vm.url" ng-change="vm.buscaEnRegion()">
+				<option value="http://restcountries.eu/rest/v1/region/africa">Africa</option>
+				<option value="http://restcountries.eu/rest/v1/region/europe">Europa</option>
+				<option value="http://restcountries.eu/rest/v1/region/americas">America</option>
+			</select>
+		</p>
+		<ul>
+			<li ng-repeat="pais in vm.paises" ng-class="{even: $even, odd: $odd}">
+				País: <span>{{pais.name}}</span>, capital: {{pais.capital}}, gentilicio: {{pais.demonym}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script type="text/javascript">
+	angular.module("apiApp",[])
+		.controller("apiAppCtrl", ['$http', controladorPrincipal]);
+
+		function controladorPrincipal($http){
+			var vm = this;
+
+			vm.buscaEnRegion = function(){
+				$http.get(vm.url).success(function(respuesta){
+					console.log("res:", respuesta)
+					vm.paises = respuesta;
+
+				});
+			}
+		}
+	</script>
+</body>
+</html>

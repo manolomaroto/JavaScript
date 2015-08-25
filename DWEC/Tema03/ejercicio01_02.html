@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calcular milisegundos desde 2000</title>
+	<script type="text/javascript">
+	function calcular(){
+		var resultado = 0;
+		var fechaActual = new Date();
+		var fechaAnterior = new Date(2000,0,1);
+		
+		resultado = fechaActual.getTime() - fechaAnterior.getTime();
+
+		document.getElementById("resultado").innerHTML = resultado;
+		}
+	</script>
+</head>
+<body onload="calcular()">
+	<p>Milisegundos transcurridos desde el 1 de enero de 2000 hasta la actualidad: <span id="resultado"></span></p>
+</body>
+</html>
