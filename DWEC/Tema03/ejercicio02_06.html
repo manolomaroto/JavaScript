@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+    <head><title> Ejemplo del Objeto navigator</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script language=JavaScript>
+            
+            function getBrowserName() {
+            	
+                var lsBrowser = navigator.userAgent;
+                if (lsBrowser.indexOf("Firefox") >= 0) {
+                    lsBrowser = "Firefox";
+                }
+                else if (lsBrowser.indexOf("Chrome") >= 0) {
+                    lsBrowser = "Chrome";
+                }
+                else {
+                    lsBrowser = "UNKNOWN";
+                }
+                return lsBrowser;
+            }
+
+            function getOS() {
+                var userPlat = "unknown";
+                var navInfo = navigator.userAgent;
+
+                if ((navInfo.indexOf("windows NT") != -1)
+                    || (navInfo.indexOf("windows 95") != -1 )
+                    || (navInfo.indexOf("windows 98") != -1 )
+                    || (navInfo.indexOf("WinNT") != -1 )
+                    || (navInfo.indexOf("Win95") != -1 )
+                    || (navInfo.indexOf("Win98") != -1 )) {
+                    userPlat = "Win32";
+                }
+                else if(navInfo.indexOf("Win16") != -1) {
+                    userPlat = "Win16";
+                }
+                //En el año 98 Apple sacó Mac OS 8.5 que sólo funcionaba en PPC
+                //PPC PowerPC es una arquitectura antigua de procesador
+                else if(navInfo.indexOf("Macintosh") != -1) {
+                    userPlat = "PPC";
+                }
+                //68K es una familia de procesadores antigua
+                else if(navInfo.indexOf("68K") != -1) {
+                    userPlat = "68K";
+                }else if(navInfo.indexOf("Linux") != -1){
+                	userPlat = "Linux";
+                }
+                return userPlat;
+            }
+
+            function getBrowserVersion() {
+                var findIndex;
+                var browserVersion = 0;
+                var browser = getBrowserName();
+
+                if (browser == "MSIE") {
+                    browserVersion = navigator.userAgent;
+                    findIndex = browserVersion.indexOf(browser) + 5;
+                    browserVersion = parseInt(browserVersion.substring(findIndex,findIndex + 1));
+                }
+                else {
+                    browserVersion = parseInt(navigator.appVersion.substring(0,1));
+                }
+                return browserVersion;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <script language=JavaScript>
+            
+            var userOS = getOS();
+            var browserName = getBrowserName();
+            var browserVersion = getBrowserVersion();
+            alert(browserVersion);
+            if (browserName == "Firefox" || browserName == "Chrome") {
+                location.replace("ejercicio02_06a.html");
+            }
+            else {
+                location.replace("ejercicio02_06b.html");
+            }
+            
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Seleccion</title>
+	<script type="text/javascript">
+	function seleccion(){
+		alert(document.getElementById("color").value);
+	}
+	</script>
+</head>
+<body>
+	<h3>Selecciona un color</h3>
+	<select id="color">
+		<option value="blanco">Blanco</option>
+		<option value="verde">Verde</option>
+		<option value="azul">Azul</option>
+	</select>
+	<p>
+		<input type="button" value="Color seleccionado" onclick="seleccion()">
+	</p>
+</body>
+</html>

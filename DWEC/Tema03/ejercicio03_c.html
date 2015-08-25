@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Seleccion en texto</title>
+	<script type="text/javascript">
+	function seleccion(){
+		var ciudad = document.getElementById("ciudad").value;
+		document.getElementById("texto").value = ciudad;
+	}
+	</script>
+</head>
+<body>
+	<h3>Selecciona una ciudad</h3>
+	<select id="ciudad">
+		<option value="Madrid">Madrid</option>
+		<option value="Barcelona">Barcelona</option>
+		<option value="Sevilla">Sevilla</option>
+		<option value="Valladolid">Valladolid</option>
+	</select>
+
+	<hr>
+
+	<input type="text" id="texto">
+	<input type="button" value="Ciudad seleccionada" onclick="seleccion()">
+</body>
+</html>

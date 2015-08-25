@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario</title>
+	<script type="text/javascript">
+	
+
+	function verTexto(){
+		var texto = document.getElementById("texto").value;
+		alert(texto);
+
+	}
+
+	function cambiarTexto(){
+		document.getElementById("texto").value = prompt("Escribe el nuevo texto");
+	}
+	</script>
+</head>
+<body>
+	<input type="text" value="Texto inicial" id="texto">
+	<br>
+	<input type="button" value="Ver el texto" onclick="verTexto()">
+	<input type="button" value="Cambiar texto" onclick="cambiarTexto()">
+</body>
+</html>

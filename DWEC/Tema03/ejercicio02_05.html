@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reconociendo el navegador</title>
+	<script type="text/javascript">
+	function navegador(){
+		var info = navigator.userAgent;
+		if(info.indexOf("IE") != -1){
+			document.bgColor='#0000ff';
+		}else if(info.indexOf("Firefox") != -1){
+			document.bgColor='#ff7700';
+		}else{
+			document.bgColor='#00ff00';
+		}
+	}
+	</script>
+</head>
+<body onload="navegador()">
+	
+</body>
+</html>

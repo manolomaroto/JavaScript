@@ -8,9 +8,13 @@
 		var pesetas, euros;
 		pesetas = document.getElementById("pesetas").value;
 
+		if (isNaN(pesetas) || pesetas == ""){
+			alert("Escribe una cifra");
+		}else{
 		euros = pesetas / 166.86;
 
 		document.getElementById("resultado").innerHTML = pesetas + " pesetas son " + euros.toFixed(2) + " euros.";
+		}
 	}
 	</script>
 </head>

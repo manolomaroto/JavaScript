@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cambio tamaño</title>
+	<script type="text/javascript">
+	function cambiarTam(){
+		myWindow.resizeTo(500,500);
+	}
+	function crearPagina(){
+		myWindow = open("","","width=100,height=100");
+	}
+	</script>
+</head>
+<body>
+	<h3>Cambio de tamaño</h3>
+	<input type="button" value="crear pagina" onclick="crearPagina()">
+	<input type="button" value="cambiar tamaño" onclick="cambiarTam()">
+
+</body>
+</html>

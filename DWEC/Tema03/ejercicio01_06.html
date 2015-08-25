@@ -23,9 +23,10 @@
 		horaCompleta = hora +":"+ minutos + ":" + segundos;
 		document.getElementById("hora").innerHTML = horaCompleta;
 	}
+	
 	</script>
 </head>
-<body onload="hora()">
+<body onload="setInterval(hora(),1000);">
 	<h1>Hola, son las <span id="hora"></span></h1>
 </body>
 </html>
