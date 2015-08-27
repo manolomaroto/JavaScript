@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Página de frames</title>
+</head>
+<body>
+	<iframe src="ejercicio03_07a.html" id="marco1"></iframe>
+	<iframe src="ejercicio03_07b.html" id="marco2"></iframe>
+	<iframe src="ejercicio03_07c.html" id="marco3"></iframe>
+	<script type="text/javascript">
+	marco1 = document.getElementById("marco1");
+	marco2 = document.getElementById("marco2");
+	marco3 = document.getElementById("marco3");
+	marco1.width = screen.availWidth * .965;
+	marco1.height = screen.height * .3;	
+	marco2.width = screen.width * .48;
+	marco2.height = screen.height * .7;
+	marco3.width = screen.width * .48;
+	marco3.height = screen.height * .7;
+	</script>
+	
+</body>
+</html>

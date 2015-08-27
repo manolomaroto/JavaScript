@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <script type="text/javascript">
+
+        function activar(){
+            campoColor=parent.frames[0].document.getElementById("color");
+                if(campoColor.selectedIndex==0){
+                    colorin='green';
+                }
+                else{
+                    colorin='blue';
+                }
+                campoFrame=parent.frames[0].document.getElementById("marcos");
+                if(campoFrame.selectedIndex==0){
+                    parent.frames[0].document.bgColor=colorin;
+                }
+                else{
+                    parent.frames[1].document.bgColor=colorin;
+                }
+        }
+    
+        </script>
+    </head>
+    <body>
+        <form>
+            <input type="Button" value="Cambiar Color" onclick="activar()">
+        </form>
+    </body>
+</html>

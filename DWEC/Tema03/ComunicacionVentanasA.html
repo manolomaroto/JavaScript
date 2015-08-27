@@ -1,0 +1,16 @@
+<!DOCTYPE html >
+<html>
+    <head>
+        <title>Ejemplo de comunicaci&oacute;n</title>
+    </head>
+    <body>
+        <form id="formulario1">
+            <input type="Button" value="Nueva Ventana" onclick="nuevaVentana = window.open('ComunicacionVentanasB.html');">
+            <input type="text" size="100" id="resultado" value="Comunicaci&oacute;n entre ventanas"/><br>
+           <input type="text" size="100"  id="datos2" value="Escribe lo que quieras pasar a la secundaria"/>
+           <input type="button" value="enviar" onclick="nuevaVentana.document.getElementById('datos').value=window.document.getElementById('datos2').value;
+            
+           ">
+        </form>
+    </body>
+</html>

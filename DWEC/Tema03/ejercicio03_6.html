@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Convertidor</title>
+	<script type="text/javascript">
+	function convertir(){
+		var pesetas, euros;
+		pesetas = document.getElementById("pesetas").value;
+
+		if (isNaN(pesetas) || pesetas == ""){
+			alert("Escribe una cifra");
+		}else{
+		euros = pesetas / 166.86;
+
+		nuevaVentana = window.open('','Pesetas','width=200,height=200,top=200,left=200');
+		nuevaVentana.document.write('<html>');
+		nuevaVentana.document.write('<head>');
+		nuevaVentana.document.write('<title>Cambio: euros</title>');
+		nuevaVentana.document.write('</head>');
+		nuevaVentana.document.write('<body>');
+		nuevaVentana.document.write('<p id="resultado"></p>');
+		nuevaVentana.document.write('<input type="button" value="Cerrar" onclick="window.close()"/>');
+		nuevaVentana.document.write('</body>');
+		nuevaVentana.document.write('</html>');
+
+		nuevaVentana.document.getElementById("resultado").innerHTML = pesetas + " pesetas son " + euros.toFixed(2) + " euros.";
+		}
+	}
+	</script>
+</head>
+<body>
+	<h1>Convertidor de pesetas</h1>
+	<p>Introduce la cantidad de pesetas <input type="text" id="pesetas"><input type="button" onclick="convertir()" value="Convertir"></p>
+	<p id="resultado"></p>
+	
+</body>
+</html>
