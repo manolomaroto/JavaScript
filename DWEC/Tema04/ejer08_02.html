@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Clases y subclases</title>
+	<script type="text/javascript">
+	function vehiculo(unaMarca,unModelo,unaMatricula,unaFechaMatriculacion){
+		this.marca = unaMarca;
+		this.modelo = unModelo;
+		this.matricula = unaMatricula;
+		this.fechaMatriculacion = unaFechaMatriculacion;
+		this.calcularAntiguedad = function calcularAntiguedad(fechaMatriculacion){
+		
+			var hoy = new Date();
+			var fecha = Date.parse(unaFechaMatriculacion);
+			antiguedad = hoy.getTime() - fecha;
+			return (antiguedad / (365*24*60*60*1000)).toFixed(2);
+		}
+
+		this.verComoEs = function verComoEs(){
+			document.write("<br>Marca: " + this.marca);
+			document.write("<br>Modelo: " + this.modelo);
+			document.write("<br>Matricula: " + this.matricula);
+			document.write("<br>Fecha matriculacion: " + this.fechaMatriculacion);
+			document.write("<br>Tiene: " + this.calcularAntiguedad(this.fechaMatriculacion) + " años");
+		}
+	}
+
+	/*vehiculo.prototype.calcularAntiguedad = function (fechaMatriculacion){
+		
+			var hoy = new Date();
+			var fecha = Date.parse(fechaMatriculacion);
+			antiguedad = hoy.getTime() - fecha;
+			return (antiguedad / (365*24*60*60*1000)).toFixed(2);
+		}*/
+
+	function turismo(unCombustible,unaPotencia,unaMarca,unModelo,unaMatricula,unaFechaMatriculacion){
+		this.turismo = vehiculo;
+		this.turismo(unaMarca,unModelo,unaMatricula,unaFechaMatriculacion);
+		delete this.turismo;
+		this.combustible = unCombustible;
+		this.potencia = unaPotencia;
+		this.verMiTurismo = function verMiTurismo(){
+			
+			document.write("<br>Combustible:" + this.combustible);
+			document.write("<br>Potencia: " + this.potencia);
+			
+		}
+	}
+
+	function camion(unPesoVacio,unPMA,unaMarca,unModelo,unaMatricula,unaFechaMatriculacion){
+		this.camion = vehiculo;
+		this.camion(unaMarca,unModelo,unaMatricula,unaFechaMatriculacion);
+		delete this.camion;
+		this.pesoVacio = unPesoVacio;
+		this.pMA = unPMA;
+		this.calcularCargaMaxima = function calcularCargaMaxima(pesoVacio,pMA){
+			return pMA - pesoVacio;
+		}
+		this.verMiCamion = function verMiCamion(){
+			document.write("<br>Peso en vacio: " + this.pesoVacio);
+			document.write("<br>PMA: " + this.pMA);
+			document.write("<br>Carga maxima: " + this.calcularCargaMaxima(this.pesoVacio,this.pMA));
+		}
+	}
+
+	var micoche = new vehiculo("Seat","Toledo","1234GHM","March 21,2001");
+	//micoche.verComoEs();
+
+	var miTurismo = new turismo("Gasolina","321","Ford","Mustang","4325jkj","July 15,2014");
+	miTurismo.verComoEs();
+	miTurismo.verMiTurismo();
+
+	var miCamion = new camion(10000,15000,"Pegaso","Albatros","6543FGH","September 14,1974");
+	miCamion.verComoEs();
+	miCamion.verMiCamion();
+
+	//alert(calcularAntiguedad("March 21,1999"));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Objetos</title>
+	<script type="text/javascript">
+	function imprimirDatos(){
+		document.write("<br>Marca: " + this.marca);
+		document.write("<br>Modelo: " + this.modelo);
+		document.write("<br>Año: " + this.anyo);
+	}
+
+	function coche(marca_in,modelo_in,anyo_in){
+		this.marca = marca_in;
+		this.modelo = modelo_in;
+		this.anyo = anyo_in;
+		this.imprimirDatos = imprimirDatos;
+	}
+
+	var coches = new Array(4);
+
+	coches[0] = new coche("Seat","Toledo","1995");
+	coches[1] = new coche("Ford","Mondeo","2012");
+	coches[2] = new coche("Skoda","Fabia","2010");
+	coches[3] = new coche("Renault","Clio","2001");
+
+	//Añadimos lapropiedad matricula al coche numero 3 del array
+	coches[3].matricula = "m-3213-gt";
+
+	for (var i = 0; i < coches.length; i++){
+		/*document.write("Marca: " + coches[i].marca + " Modelo: " + coches[i].modelo + " Año: " + coches[i].anyo + "<br>");*/
+		coches[i].imprimirDatos();
+	}
+
+	alert(coches[3].matricula);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

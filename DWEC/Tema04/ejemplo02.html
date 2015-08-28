@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calcular el IVA</title>
+	<script type="text/javascript">
+	function calcularIVA(iva,precio){
+		var ivaTotal = precio * (iva / 100);
+		var productoConIva = ivaTotal + parseInt(precio);
+		document.getElementById("resultado").innerHTML = "El precio con IVA es " + productoConIva;
+	}
+	</script>
+</head>
+<body>
+	<h1>Calculo del IVA</h1>
+	<span>Introduce el IVA</span><input type="text" id="iva"><br>
+	<span>Introduce el precio del producto</span><input type="text" id="precio"><br>
+	<input type="button" onclick="calcularIVA(document.getElementById('iva').value, document.getElementById('precio').value)" value="Calcular IVA">
+	<p id="resultado"></p>
+</body>
+</html>

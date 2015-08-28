@@ -1,0 +1,77 @@
+<!--
+    Autor=Laura Lozano Calvo
+    Fecha=03-nov-2013
+    Licencia=GPL v3
+    Versión=1.0
+    Descripción= ¿Ejemplos de qué concepto de Orientación a Objetos?
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            function superClase(argumento) {
+                this.valorSuper = argumento;
+                this.metodoSuper = function metodoSuper(){
+                    return "\"ESTE MÉTODO NO HACE NADA\".";
+                }
+            }
+   
+            function subClase3(argumentoSub, argumentoSuper){
+                //Primero aplicamos herencia desde la super clase y borramos
+                //el objeto temporal o enmascarado
+                this.objetoSuper = superClase;
+                this.objetoSuper(argumentoSuper);
+                delete this.objetoSuper;
+                //A continuación ponemos las propiedades y/o métodos de la sub clase
+                this.valorSub = argumentoSub;
+                
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div6"></div>
+        <script>
+            
+            function superClase(argumento) {
+                this.valorSuper = argumento;
+                this.metodoSuper = function metodoSuper(){
+                    return "\"ESTE MÉTODO NO HACE NADA\".";
+                }
+            }
+            //Declaramos una subClase4 pero SÓLO CON SUS ARGUMENTOS
+            function subClase4(argumentoSub){
+                this.valorSub = argumentoSub;
+            }
+            //Accedemos a su prototipo y agregamos la super clase con SUS ARGUMENTOS
+            subClase4.prototype = new superClase("\"VALOR-SUPER-4\"");
+            //Creamos un objeto de la sub clase con SUS ARGUMENTOS
+            var objetoSub4 = new subClase4("\"VALOR-SUB-4\"");
+            //Comprobamos que es instancia del objeto de donde hereda
+            cad = "Ahora <code>objetoSub4</code> SI es una instancia de <code>superClase</code>: " +
+                (objetoSub4 instanceof superClase) + "<br />";
+            //Comprobamos propiedades y métodos heredados desde la super clase
+            cad += "¿Tiene <code>objetoSub4</code> la propiedad <code>valorSuper</code>?: " +
+                (objetoSub4.hasOwnProperty("valorSuper")) + "<br />" +
+                "¿Tiene <code>objetoSub4</code> la propiedad <code>valorSub</code>?: " +
+                (objetoSub4.hasOwnProperty("valorSub")) + "<br />" +
+                "En la propiedad <code>objetoSub4.valorSuper</code> tenemos el valor: " +
+                objetoSub4.valorSuper + "<br />" +
+                "y también podemos extraer <code>objetoSub4.metodoSuper()</code>: " +
+                objetoSub4.metodoSuper() + "<br />";
+            //Ahora modificamos la propiedad y reescribimos el método
+            objetoSub4.valorSuper = "\"VALOR DE SUPER-4 MODIFICADO\"";
+            cad += "Podemos modificar <code>objetoSub4.valorSuper</code>: " +
+                objetoSub4.valorSuper + "<br />";
+            objetoSub4.metodoSuper = function metodoSuper(){
+                return "\"MÉTODO DE SUPER-4 MODIFICADO.\""
+            }
+            cad += "y también podemos reescribir <code>objetoSub2.metodoSuper()</code>:" +
+                objetoSub4.metodoSuper() + "<br />";
+            //Presentamos todo
+            document.getElementById("div6").innerHTML = cad;
+        </script>
+    </body>
+</html>

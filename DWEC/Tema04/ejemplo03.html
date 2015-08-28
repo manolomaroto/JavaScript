@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Arrays</title>
+	<script type="text/javascript">
+		var crearArray = function(){
+			var nombre = document.getElementById("nombre").value;
+			var numeroElementos = parseInt(document.getElementById("elementos").value);
+			
+
+			nombre = new Array(numeroElementos);
+
+			for (var i=0; i < nombre.length; i++){
+				nombre[i] = prompt("Introduce el elemento " + (i+1) + " de tu array");
+			}
+
+			return nombre;
+
+		}
+
+		function anyadir(crearArray){
+			alert(crearArray);
+		}
+	</script>
+</head>
+<body>
+	<h1>Ejemplos con arrays</h1>
+
+	<h2>Crea tu propio array</h2>
+	<span>Nombre</span><input type="text" id="nombre"><br>
+	<span>Numero de elementos</span><input type="text" id="elementos"><br>
+	<input type="button" onclick="crearArray(nombre)" value="Crear Array">
+
+	<h2>Push en tu array</h2>
+	<p>Añade nuevos elementos y devuelve la nueva longitud</p>
+	<span>Añade un nuevo elemento</span><input type="text" id="nuevoElemento"><br>
+	<input type="button" onclick="anyadir()" value="Añadir">
+	
+</body>
+</html>

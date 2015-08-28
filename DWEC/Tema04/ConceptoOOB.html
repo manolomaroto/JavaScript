@@ -1,0 +1,60 @@
+<!--
+    Autor=Laura Lozano Calvo
+    Fecha=03-nov-2013
+    Licencia=GPL v3
+    Versión=1.0
+    Descripción= ¿Ejemplos de qué concepto de Orientación a Objetos?
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            function superClase(argumento) {
+                this.valorSuper = argumento;
+                this.metodoSuper = function metodoSuper(){
+                    return "\"ESTE MÉTODO NO HACE NADA\".";
+                }
+            }
+   
+            function subClase3(argumentoSub, argumentoSuper){
+                //Primero aplicamos herencia desde la super clase y borramos
+                //el objeto temporal o enmascarado
+                this.objetoSuper = superClase;
+                this.objetoSuper(argumentoSuper);
+                delete this.objetoSuper;
+                //A continuación ponemos las propiedades y/o métodos de la sub clase
+                this.valorSub = argumentoSub;
+                
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div5"></div>
+        <script>
+            var objetoSub3 = new subClase3("\"VALOR-SUB-3\"", "\"VALOR-SUPER-3\"");
+            cad = "Es <code>objetoSub3</code> una instancia de <code>superClase</code>: " +
+                (objetoSub3 instanceof superClase) + "<br />";
+            //Comprobamos propiedades y métodos heredados desde la super clase
+            cad += "¿Tiene <code>objetoSub3</code> la propiedad <code>valorSuper</code>?: " +
+                (objetoSub3.hasOwnProperty("valorSuper")) + "<br />" +
+                "En la propiedad <code>objetoSub3.valorSuper</code> tenemos el valor: " +
+                objetoSub3.valorSuper + "<br />" +
+                "y también podemos extraer <code>objetoSub3.metodoSuper()</code>: " +
+                objetoSub3.metodoSuper() + "<br />";
+            //Ahora modificamos la propiedad y reescribimos el método
+            objetoSub3.valorSuper = "\"ESTE ES UN NUEVO VALOR DE SUPER-3\"";
+            cad += "Podemos modificar <code>objetoSub3.valorSuper</code>: " +
+                objetoSub3.valorSuper + "<br />";
+            objetoSub3.metodoSuper = function metodoSuper(){
+                return "\"ESTO ES REESCRITO DEL MÉTODO DE SUPER-3.\""
+            }
+            cad += "y también podemos reescribir <code>objetoSub3.metodoSuper()</code>:" +
+                objetoSub3.metodoSuper() + "<br />";
+            //Presentamos todo
+            document.getElementById("div5").innerHTML = cad;
+        </script>	
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>escape()</title>
+	<style type="text/css">
+		#ver{
+			font-family: sans-serif;
+			margin-left: 200px;
+			font-size: 2em;
+			
+			height: 50px;
+		}
+	</style>
+	<script type="text/javascript">
+	function ver(){
+		var resultado = "";
+
+		var vocales = new Array('á','é','í','ó','ú','ñ');
+
+		for (var i = 0; i < vocales.length; i++){
+			resultado += vocales[i] + " : " + escape(vocales[i]) + "; "; 
+		}
+
+		document.getElementById("resultado").innerHTML = resultado;
+	}
+
+	function ver2(){
+		var resultado = "";
+
+		var vocales = new Array('á','é','í','ó','ú','ñ');
+
+		for (var i = 0; i < vocales.length; i++){
+			resultado += vocales[i] + " : " + encodeURIComponent(vocales[i]) + "; "; 
+		}
+
+		document.getElementById("resultado").innerHTML = resultado;
+	}
+	</script>
+</head>
+<body>
+	<h3>Pulsa para ver las
+codificaciones de las vocales acentuadas y de la ñ en ISO-8859-15 y UTF-8. Utiliza
+el método write() del objeto documento.</h3>
+<input type="button" onclick="ver()" value="Ver ISO-8859-15" id="ver" >
+<input type="button" onclick="ver2()" value="Ver UTF-8" id="ver" >
+<p id="resultado"></p>
+</body>
+</html>

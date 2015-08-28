@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Funciones predefinidas</title>
+</head>
+<body>
+	<h1>escape()</h1>
+	<h3>Recibe como argumento una cadena de caracteres y devuelve esa misma cadena sustituida con su codificacion hexadecimal</h3>
+	<input type="text" id="cadena" placeholder="Escribe aqui">
+	<input type="button" onclick="cadena()" value="Pulsa">
+	<p id="resultado1"></p>
+
+	<h1>eval()</h1>
+	<h3>Convierte una cadena que pasemos en código javascript ejecutable</h3>
+	<input type="text" id="cadena2" placeholder="Escribe una operacion numerica">
+	<input type="button" onclick="cadena2()" value="Pulsa">
+	<p id="resultado2"></p>
+
+	<script type="text/javascript">
+	
+	function cadena(){
+		var cadena = document.getElementById("cadena").value;
+		var inputCodificado = encodeURIComponent(cadena);
+
+		document.getElementById("resultado1").innerHTML = "Cadena codificada " + inputCodificado;
+	}
+
+	function cadena2(){
+		var cadena2 = document.getElementById("cadena2").value;
+		var resultado = eval(cadena2);
+		document.getElementById("resultado2").innerHTML = "El resultado es " + resultado;
+	}
+
+	var fecha = new Date()
+var fechaString = String(fecha)
+alert("La fecha actual es: "+ fecha);
+	
+	</script>
+</body>
+</html>

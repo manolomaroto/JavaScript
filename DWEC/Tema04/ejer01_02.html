@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Productos alimenticios</title>
+	<script type="text/javascript">
+
+	
+
+	function productosAlimenticios(codigo_in,nombre_in,precio_in){
+		this.codigo = codigo_in;
+		this.nombre = nombre_in;
+		this.precio = precio_in;
+		this.imprimir = imprimir;
+	}
+
+	function imprimir(){
+		document.write("Codigo: " + this.codigo);
+		document.write("<br>Nombre: " + this.nombre);
+		document.write("<br>Precio: " + this.precio + "<br>");
+	}
+
+	
+
+	var productos = new Array(3);
+
+	productos[0] = new productosAlimenticios("001","Jamon","23,5");
+	productos[1] = new productosAlimenticios("002","Chorizo","5,2");
+	productos[2] = new productosAlimenticios("003", "Panceta", "7,5");
+
+	for(var i = 0; i<productos.length; i++){
+		productos[i].imprimir();
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

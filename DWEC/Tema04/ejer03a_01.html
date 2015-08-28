@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Resultado</title>
+	
+</head>
+<body>
+	<p id="resultado"></p>
+	<script type="text/javascript">
+
+		var palabras = opener.document.getElementById("palabras").value;
+		var arrayPalabras = palabras.split(" ");
+	
+		var ordenadas = arrayPalabras.sort();
+
+		var mensaje ="";
+		
+		mensaje += "Primera palabra: " + arrayPalabras[0] + "<br>";
+		mensaje += "Ultima palabra: " + arrayPalabras[arrayPalabras.length-1] + "<br>";
+		mensaje += "Longitud del array: " + arrayPalabras.length + "<br>";
+		mensaje += "Palabras ordenadas: " + ordenadas + "<br>";
+
+		document.getElementById("resultado").innerHTML = mensaje;
+		
+		
+	</script>
+</body>
+</html>

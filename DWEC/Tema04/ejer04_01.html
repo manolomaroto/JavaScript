@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Splice</title>
+	<script type="text/javascript">
+		var myFish = ["angel","clown","mandarin","dragon"];
+		function ejemplo1(){
+			alert("myFish: " + myFish );
+		}	
+		//Añade un elemento en la posicion 2 del array
+		function ejemplo2(){
+			removed = myFish.splice(2,0,'drum');
+			alert("After adding 1: " + myFish);
+			alert("removed is: " + removed);
+		}
+		//Borra el elemento en la posicion 3 del array y lo pone en removed
+		function ejemplo3(){
+			removed = myFish.splice(3,1);
+			alert("After removing 1: " + myFish);
+			alert("Removed is: " + removed);
+		}
+		//Elimina mandarin y pone en su lugar trompeta
+		function ejemplo4(){
+			removed = myFish.splice(2,1,'trompeta');
+			alert("Afetr removing 1: " + myFish);
+			alert("Removed is: " + removed);
+		}
+		//Añade tres elementos sin borrar ninguna y corre los demás
+		function ejemplo5(){
+			removed = myFish.splice(0,2,'zanahoria', 'mesa', 'pera');
+			alert("After removing 1: " + myFish);
+			alert("Removed is: " + removed);
+		}
+	</script>
+	<style type="text/css">
+		#boton{
+			height: 100px;
+			
+			font:2em Helvetica, sans-serif;
+			color: #555;
+			margin: 20px;;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="boton" onclick="ejemplo1()" value="Que hay en myFish">
+	<input type="button" id="boton" onclick="ejemplo2()" value="myFish.splice(2,0,'drum')">
+	<input type="button" id="boton" onclick="ejemplo3()" value="myFish.splice(3,1)">
+	<input type="button" id="boton" onclick="ejemplo4()" value="myFish.splice(2,1,'trompeta')">
+	<input type="button" id="boton" onclick="ejemplo5()" value="myFish.splice(0,2,'zanahoria', 'mesa', 'pera')">
+</body>
+</html>
