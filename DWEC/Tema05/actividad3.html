@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" onclick="ver(event)">
+<head>
+	<meta charset="UTF-8">
+	<title>Eventos raton</title>	
+	<script type="text/javascript">
+	function ver(event){
+
+		var coordenadas ="";
+		coordenadas = "Horizontal clientX: " + event.clientX + " Vertical clientY: " + event.clientY;
+		coordenadas += "<br>Horizontal scrrenx: " + event.screenX + " Vertical screenY: " + event.screenY;
+		coordenadas += "<br>Horizontal pageX: " + event.pageX + " Vertical pageY: " + event.pageY;
+
+		document.getElementById("info").innerHTML = coordenadas;
+	}
+	</script>
+</head>
+<body >
+	
+	<div id="info"></div>
+</body>
+</html>
