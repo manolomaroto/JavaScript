@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Elegir Navegador</title>
+	<style type="text/css">
+		#contenedor{
+			margin: 0 auto;
+			text-align: center;
+		}
+	/*Estilos para crear una tabla */
+		.contenedorTabla{
+			display: table;
+			border: 2px solid #a00;
+			
+			margin: 0 auto;
+		}
+		.contenidos{
+			display: table-row;
+
+		}
+		.columna1,.columna2{
+			display: table-cell;
+			border: 1px solid #009;
+			vertical-align: middle;
+			padding: 10px;
+		}
+		.columna1{
+			width: 170px;
+		}
+	</style>
+	<script type="text/javascript">
+	function seleccion(esto){
+		var est = esto.substr(0,esto.length-1);
+		if(document.getElementById(esto).checked == true){
+			document.getElementById(est).checked = true;
+		}else{
+			document.getElementById(est).checked = false;
+		}
+	}
+
+	function seleccionSo(esto){
+		var clase = document.getElementsByClassName(esto);
+	
+
+		if(document.getElementById(esto).checked == true){
+			for(var i = 0; i < clase.length; i++){
+			
+				document.getElementById(esto+i).checked = true;
+			}
+			
+		}else{
+
+			for(var i = 0; i < clase.length; i++){
+				document.getElementById(esto+i).checked = false;
+			}
+		}	
+	}
+	</script>
+</head>
+<body>
+	<div id="contenedor">
+	<h1>Elige tu navegador</h1>
+	<div class="contenedorTabla">
+		<div id="contenidos">
+			<div class="columna1">
+				IE para Windows
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="windows" id="windows0" class="windows" onchange="seleccion(this.id)">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				IE para MAC
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="mac" id="mac0" class="mac" onchange="seleccion(this.id)">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				Firefox para Windows
+			</div>
+			<div class="columna2">
+				<input type="checkbox" id="windows1" onchange="seleccion(this.id)" class="windows">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				FF para MAC
+			</div>
+			<div class="columna2">
+				<input type="checkbox" id="mac1" onchange="seleccion(this.id)" class="mac">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				Firefox para Linux
+			</div>
+			<div class="columna2">
+				<input type="checkbox" id="linux0" onchange="seleccion(this.id)" class="linux">
+			</div>
+		</div>
+	</div>
+<h3>Sistema Operativo elegido</h3>
+	<div class="contenedorTabla">
+		<div id="contenidos">
+			<div class="columna1">
+				Windows
+			</div>
+			<div class="columna2">
+				<input type="checkbox" id="windows" onchange="seleccionSo(this.id)">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				MAC
+			</div>
+			<div class="columna2">
+				<input type="checkbox" id="mac" onchange="seleccionSo(this.id)">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				Linux
+			</div>
+			<div class="columna2">
+				<input type="checkbox" id="linux" onchange="seleccionSo(this.id)">
+			</div>
+		</div>
+	</div>
+	</div>
+	
+</body>
+</html>

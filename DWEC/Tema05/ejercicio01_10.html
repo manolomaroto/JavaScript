@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Title Page</title>
+
+		<!-- Bootstrap CSS -->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<style type="text/css">
+			.etiqueta{
+				display: inline-block ;
+				width: 50px;
+			}
+			.boton{
+				margin: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<h1 class="text-center">Formulario de compra</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-offset-5">
+					<div class="row">
+						<span class="etiqueta">Importe</span> <input type="text" id="importe" value="0">
+							
+					</div>
+					<div class="row">
+						<span class="etiqueta">IVA</span> <input type="text" id="iva" disabled>
+					</div>
+					<div class="row">
+						<span class="etiqueta">Total</span> <input type="text" id="total" disabled value="0">
+					</div>
+					<div class="row">
+						<input type="button" value="Calcular" onclick="calcular()" class="boton">
+						<input type="button" value="Catalogo" onclick="catalogo()" class="boton">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<h3 class="text-center">Forma de pago</h3>
+				<div class="row">
+					<div class="col-md-offset-3 col-md-2">
+						Tarjeta (1€)<input type="radio" name="pago" value="1" onchange="precioCompra(this.id)" id="tarjeta">
+					</div>
+					<div class="col-md-2">
+						<span class="">Cheque (2€)</span> <input type="radio" name="pago" value="2" onchange="precioCompra(this.id)" id="cheque">
+					</div>
+					<div class="col-md-2">
+					<span class="">Transferencia (3€)</span> <input type="radio" name="pago" value="3" onchange="precioCompra(this.id)" id="transferencia">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-offset-5">
+						<input type="button" value="Comprar" onclick="comprar()" class="boton">
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		var precioPago = 0;
+
+		function calcular(){
+			var importeTotal = 0;
+			
+			var importe = document.getElementById("importe").value;
+			if(isNaN(importe)){
+				alert("Escriba una cantidad");
+			}else{
+			var totalIva = parseFloat(importe)*.21
+			importeTotal = totalIva + parseFloat(importe);
+			document.getElementById("iva").value = totalIva;
+			document.getElementById("total").value = importeTotal;
+		}
+
+		}
+
+		function catalogo(){
+			var nuevaVentana = window.open('ejercicio01_10a.html');
+		}
+
+		function precioCompra(identificador){
+
+				document.getElementById("total").value = parseFloat(document.getElementById("total").value) - precioPago;
+				
+				document.getElementById("total").value = parseFloat(document.getElementById("total").value) + parseFloat(document.getElementById(identificador).value);
+				//guardo en una variable la cantidad de la forma de pago seleccionada anteriormente para borrarla antes de sumar la nueva en caso de que el cliente cambie de preferencia
+				precioPago = document.getElementById(identificador).value;
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario</title>
+	<style type="text/css">
+		#contenedor{
+			
+			
+			position: relative;
+			border: 1px solid #a00;
+			width: 200px;
+		}
+		.producto{
+			padding: 5px;
+		}
+		.envio{
+			margin: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+	function envio(){
+		var seleccion = document.forms[0];
+		var sistemas = "";
+		for(var i = 0; i < seleccion.length; i++){
+			if (seleccion[i].checked == true){
+			sistemas += seleccion[i].name + " ";
+			}
+		}
+		document.getElementById("sist").innerHTML = sistemas;
+	}
+	</script>
+</head>
+<body>
+<div id="contenedor">
+	<form action="" method="get" id="formu">
+		<div class="producto">IE para Windows<input type="checkbox" name="IE para Windows"></div>
+		<div class="producto">IE para Mac<input type="checkbox" name="IE para Mac"></div>
+		<div class="producto">FF para Windows<input type="checkbox" name="Firefox para Windows"></div>
+		<div class="producto">FF para Mac<input type="checkbox" name="Firefox para Mac"></div>
+		<div class="producto">FF para Linux<input type="checkbox" name="Firefox para Linux"></div>
+		<div class="envio"><input type="button" name="enviar" value="Enviar" onclick="envio()"></div>
+
+	</form>
+</div>
+<div class="resultado">
+	<p>Has seleccionado <span id="sist"></span></p>
+</div>
+</body>
+</html>

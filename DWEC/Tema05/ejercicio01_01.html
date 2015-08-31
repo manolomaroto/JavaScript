@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" onmousemove="verCoordenadas(event)" onclick="cambiarFondo()" onkeypress="cambiarFondo2()">
+<head>
+	<meta charset="UTF-8">
+	<title>Ratón/Teclado</title>
+	<script type="text/javascript">
+	function verCoordenadas(event){
+		document.getElementById("contenedor").style.backgroundColor = "#FFF";
+		document.getElementById("titulo").innerHTML = "Ratón";
+		var cX = event.clientX;
+		var cY = event.clientY;
+		var nX = event.screenX;
+		var nY = event.screenY;
+		document.getElementById("parrafo1").innerHTML = "Navegador: [" + nX + "," + nY +"]";
+		document.getElementById("parrafo2").innerHTML = "Pagina: [" + cX +"," + cY + "]"; 
+	}
+
+	function verTeclas(event){
+		document.getElementById("titulo").innerHTML = "Teclado";
+		var caracter = String.fromCharCode(event.charCode);
+		var codigo = event.charCode;
+		document.getElementById("parrafo1").innerHTML = "Caracter: [" + caracter + "]";
+		document.getElementById("parrafo2").innerHTML = "Codigo: [" + codigo + "]";
+	}
+
+	function cambiarFondo(){
+		document.getElementById("contenedor").style.backgroundColor = "#FFFFCC";
+	}
+
+	function cambiarFondo2(){
+		document.getElementById("contenedor").style.backgroundColor = "#CCE6FF" ;
+	}
+	</script>
+	<style type="text/css">
+		#contenedor{
+			background-color: #fff;
+			width: 200px;
+			border: 1px solid #000;
+			height: 150px;
+		}
+	</style>
+</head>
+<body onkeypress="verTeclas(event)">
+<div id="contenedor">
+	<h1 id="titulo"></h1>
+	<p id="parrafo1"></p>
+	<p id="parrafo2"></p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Elegir Navegador</title>
+	<style type="text/css">
+		#contenedor{
+			margin: 0 auto;
+			text-align: center;
+		}
+	/*Estilos para crear una tabla */
+		.contenedorTabla{
+			display: table;
+			border: 2px solid #a00;
+			
+			margin: 0 auto;
+		}
+		.contenidos{
+			display: table-row;
+
+		}
+		.columna1,.columna2{
+			display: table-cell;
+			border: 1px solid #009;
+			vertical-align: middle;
+			padding: 10px;
+		}
+		.columna1{
+			width: 170px;
+		}
+	</style>
+	<script type="text/javascript">
+	function seleccion(esto){
+		var so = document.getElementById(esto).getAttribute("class");
+		if(document.getElementById(esto).checked == true){
+			document.getElementById(so).checked = true;
+		}else{
+			document.getElementById(so).checked = false;
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="contenedor">
+	<h1>Elige tu navegador</h1>
+	<div class="contenedorTabla">
+		<div id="contenidos">
+			<div class="columna1">
+				IE para windows
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="IE para Windows" id="IEWindows" class="windows" onchange="seleccion(this.id)">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				IE para MAC
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="IE para MAC" id="IEMAC" class="mac" onchange="seleccion(this.id)">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				Firefox para windows
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="FF para Windows" id="FFWindows" class="windows" onchange="seleccion(this.id)">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				FF para MAC
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="FF para MAC" id="FFMAC" class="mac" onchange="seleccion(this.id)">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				Firefox para Linux
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="FF para Linux" id="FFLinux" class="linux" onchange="seleccion(this.id)">
+			</div>
+		</div>
+	</div>
+<h3>Sistema Operativo elegido</h3>
+	<div class="contenedorTabla">
+		<div id="contenidos">
+			<div class="columna1">
+				Windows
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="Windows" id="windows">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				MAC
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="MAC" id="mac">
+			</div>
+		</div>
+		<div id="contenidos">
+			<div class="columna1">
+				Linux
+			</div>
+			<div class="columna2">
+				<input type="checkbox" value="Linux" id="linux">
+			</div>
+		</div>
+	</div>
+	</div>
+	
+</body>
+</html>
