@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Validaciones</title>
+	<script type="text/javascript">
+	function validar01(){
+		var valor = document.getElementById("campo01").value;
+
+		if(valor == null || valor.length == 0){
+			alert("el campo no puede ser vacio");
+			return false;
+		}
+		return true;
+	}
+
+	function validar02(){
+		var valor = document.getElementById("campo02").value;
+
+		if(isNaN(valor)){
+			alert("El campo tiene que ser numerico");
+			return false;
+		}
+		return true;
+	}
+
+	function validar03(){
+		var anyo = document.getElementById("ano").value;
+		var mes = document.getElementById("mes").value;
+		var dia = document.getElementById("dia").value;
+
+		var fecha = new Date(anyo,mes,dia);
+		if(!isNaN(fecha)){
+			alert("Nooo");
+			return false;
+		}
+		return true;
+	}
+
+	function validar04(){
+		var valor = document.getElementById("chequeo");
+		if(!valor.checked){
+			alert("No esta marcado");
+			return false;
+		}
+		return true;
+	}
+
+	function validar05(){
+		var correo = document.getElementById("correo").value;
+		if(!(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/.test(correo))){
+			alert("noooo");
+			return false;
+		}
+		return true;
+	}
+
+	function validar06(){
+		var dni = document.getElementById("dni").value;
+		var letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T'];
+
+		if( !(/^\d{8}[A-Z]$/.test(dni)) ){ 
+			alert("No tiene la estructura correcta")
+			return false; }
+		if(valor.charAt(8) != letras[(parseInt(dni.substring(0, 8)))%23])
+		{ alert("La letra no es correcta"); return false; }
+	return true;
+	}
+
+	function validar07(){
+		var telefono = document.getElementById("telefono").value;
+		var expresion = /^[96]\d{8}$/;
+		if(!(expresion.test(telefono))){
+		return false;
+		}
+		alert("asd")
+		return true;
+	}
+	</script>
+</head>
+<body>
+	<h1>Validar un campo como obligatorio</h1>
+	<form action="" method="post" id="formulario01" onsubmit="return validar01()">
+		El campo no puede estar vacío: <input type="text" id="campo01">
+		<input type="submit" value="Validar" >
+	</form>
+
+	<h1>Validar un campo </h1>
+	<form action="" method="post" id="formulario02" onsubmit="return validar02()">
+		Escribe un numero: <input type="text" id="campo02"><br>
+		<input type="submit" value="Validar" name="validar">
+	</form>
+
+	<h1>Validar si una fecha es correcta</h1>
+	<form action="" method="post" id="formulario03" onsubmit="return validar03()">
+		Escribe un año<input type="text" id="ano"><br>
+		Escribe el mes <input type="text" id="mes"><br>
+		Escribe el dia <input type="text" id="dia"><br>
+		<input type="submit" value="Validar">
+	</form>
+	
+	<h1>Validar un checkbox</h1>
+	<form action="" method="post" id="formulario04" onsubmit="return validar04()">
+		¿Está o no está? <input type="checkbox" id="chequeo">
+		<input type="submit" value="Validar">
+	</form>
+
+	<h1>Validar una dirección de correo electronico</h1>
+	<form action="" method="post" id="formulario05" onsubmit="return validar05()">
+		Email: <input type="text" id="correo">
+		<input type="submit" value="Validar">
+	</form>
+
+	<h1>Validar un DNI</h1>
+	<form action="" method="post" id="forumario06" onsubmit="return validar06()">
+		Escribe el DNI <input type="text" id="dni">
+		<input type="submit" value="Validar">
+	</form>
+
+	<h1>Validar un numero de telefono</h1>
+	<form action="" method="post" id="formulario07" onsubmit="return validar07()">
+		Escribe tu numero de telefono <input type="text" id="telefono">
+		<input type="submit" value="Validar">
+	</form>
+</body>
+</html>

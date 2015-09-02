@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario banco</title>
+	<script type="text/javascript">
+	function validar(){
+		
+		if(validarCuenta() && validarCif() && validarNombre()){
+			return true;
+		}else{
+			return false;
+		}
+
+
+	}
+
+	function validarCuenta(){
+		var expresionCuenta = /\d{4}-\d{4}-\d{2}-\d{10}/;
+		var cuenta = document.getElementById("numeroCuenta").value;
+		
+		if(cuenta == "" || cuenta == null){
+			alert("El campo cuenta es obligatorio");
+		}else if(expresionCuenta.test(cuenta)){
+			alert("hello");
+		}else{
+			alert("by");
+		}
+	}
+
+	function validarCif(){
+		var expresionCif = /[a-wA-W]{1}[01-52]\d{4}\w{1}/;
+		
+		var cif = document.getElementById("numeroCif").value;
+
+		if(cif == "" || cif == null){
+			alert("El campo CIF es obligatorio");
+		}else if(expresionCif.test(cif)){
+			
+			return true;
+		}else{
+			alert("nooo")
+			
+		}
+	}
+
+	function validarNombre(){
+		var nombre = document.getElementById("nombre").value;
+		
+		if(nombre == "" || nombre == null){
+			alert("El nombre es obligatorio");
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	function habilitar(){
+		var nombre = document.getElementById("nombre").value;
+		
+		var apellido = document.getElementById("apellidos");
+		if(nombre.length>0){
+			apellido.disabled = false;
+			
+		}else{
+			
+			apellido.value = "";
+			apellido.disabled = true;
+		}
+	}
+	window.oninput = habilitar;
+	
+	</script>
+</head>
+<body>
+	<h1>Formulario validacion cuenta bancaria</h1>
+	<form action="" method="get" onsubmit="return validarNombre()">
+		<label for="numero">Numero de cuenta (cccc-cccc-cc-cccccccccc)</label> <input type="text" id="numeroCuenta" name="numero" ><br>
+		<label for="cif">Número de CIF</label> <input type="text" id="numeroCif" name="cif"><br>
+		<label for="texto01">Nombre</label> <input type="text" id="nombre" name="texto01" ><br>
+		<label for="texto02">Apellidos</label> <input type="text" id="apellidos" name="texto02" disabled ><br>
+		<input type="submit" value="Enviar">
+		<input type="reset" value="Borrar">
+
+	</form>
+</body>
+</html>

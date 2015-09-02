@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+	function validar(){
+		alert("entrando a validar");
+		if(document.getElementById("alta").checked == true){
+			alert("se envía a alta");
+			document.getElementById("formulario").action = "alta.html";
+		}
+
+		if(document.getElementById("alta").checked == false){
+			alert("se envia a baja");
+			document.getElementById("formulario").action = "baja.html";
+		}
+
+		return true;
+	}
+	</script>
+</head>
+<body>
+	<form method="post" id="formulario" name="formulario" onsubmit="return validar()" action="formularios.asp">
+		<input type="checkbox" id="alta" name="alta" checked>Butter<br>
+		<input type="submit" value="Enviar datos" name="enviar">
+	</form>
+</body>
+</html>
