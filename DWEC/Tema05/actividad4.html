@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario</title>
+	<style type="text/css">
+		.contenedor{
+			width: 500px;
+			margin: 0px auto;
+		}
+	</style>
+	<script type="text/javascript">
+
+	function habilitar(){
+		formulario = document.forms[0];
+
+	
+		if (formulario.nombre.value.length>0 && formulario.apellidos.value.length>0 && formulario.dni.value.length>0 && formulario.sexo.value.length>0 && formulario.fechaNacimiento.value.length>0 && formulario.email.value.length>0 && formulario.telefono.value.length>0){
+			document.getElementById("envio").disabled = false;
+		}
+	}
+
+	function validar(){
+		if(/*(validarNombre() == true) && (validarApellidos() == true) && */(validarDni() == true) && (validarFecha() == true) && /*(validarSexo() == true) &&*/ (validarTelefono() == true)&& (validarEmail() == true)){
+			var valorNombre = document.forms[0].nombre.value;
+			setCookie("nombre",valorNombre, 1);
+			return true;
+		}
+			
+			return false;
+		
+	}
+
+	/*function validarNombre(){
+		var nombre = document.forms[0].nombre.value;
+		if(nombre == "" || nombre == null){
+			alert("El nombre es obligatorio");
+			return false;
+		}else{
+			return false;
+		}
+	}*/
+
+	/*function validarApellidos(){
+		var apellidos = document.forms[0].apellidos.value;
+		if(apellidos == "" || apellidos == null){
+			alert("Los apellidos son obligatorios");
+			return false;
+		}else{
+			return true;
+		}
+	}*/
+
+	function validarDni(){
+		var carnet = document.forms[0].dni.value;
+		var letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T'];
+		
+		/*if(carnet == "" || carnet == null){
+			alert("El dni es obligatorio");
+			return false;
+		}else */if( !(/^\d{8}[A-Z]$/.test(carnet)) ){ 
+			alert("El DNI no tiene la estructura correcta");
+			return false; 
+		}else if(carnet.charAt(8) != letras[(parseInt(carnet.substring(0, 8)))%23]) { 
+				alert("La letra no es correcta"); 
+				return false; 
+		}
+	return true;
+	}
+
+	/*function validarSexo(){
+		var sexo = document.forms[0].sexo;
+		if(sexo.value == "" || sexo.value == null){
+			alert("El campo sexo es obligatorio");
+			return false;
+		}else{
+			return true;
+		}
+	}*/
+
+	function validarFecha(){
+		var expresion=/^(([012]\d{1})||(3[01]))\/((0\d{1})||(1[012]))\/(19)\d{2}$/;//fecha con formato DD/MM/YYYYs
+		var fecha = document.forms[0].fechaNacimiento.value;
+		/*if(fecha == "" || fecha == null){
+			alert("El campo fecha es obligatorio");
+			return false;
+		}else */if(expresion.test(fecha)){
+            return true;
+        }else{
+            alert('Fecha incorrecta\nEl formato debe ser: DD/MM/YYYY');
+            document.fecha='';
+            return false;
+        }
+	}
+
+	function validarTelefono(){
+		var expresion=/^[96]\d{8}$/;//expresion regular: solo numeros, tiene que empezar por 9 o 6 y detras otros 8 digitos(9 en total)
+		var telefono = document.forms[0].telefono.value;
+		/*if(telefono == "" || telefono == null){
+			alert("El telefono es obligatorio");
+			return false;
+		}else*/ if(expresion.test(parseInt(telefono))){//devuelve true si se cumple la expresion
+                    return true;
+                }else{
+                alert('Telefono incorrecto.\n Debe tener 9 dígitos y empezar por 6 o por 9');
+                telefono='';//borramos los datos incorrectos
+                return false;
+            }
+	}
+
+	function validarEmail(){
+		var correo = document.forms[0].email.value;
+		var expresion = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/
+		/*if(correo == "" || correo == null){
+			alert("El correo es obligatorio");
+			return false;
+		}else */if(expresion.test(correo)){
+			return true;
+		}else{
+			alert("El correo es incorrecto");
+			return false;
+		}
+	}
+
+	window.onchange= habilitar;
+	window.oninput = habilitar;
+
+	function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+	} 
+
+	function checkCookie() {
+    var username=getCookie("nombre");
+    if (username!="") {
+        alert("Welcome again " + username);
+    }
+	}
+
+	function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+	} 
+	</script>
+</head>
+<body onload="checkCookie()">
+<div class="contenedor">
+	<h1>Datos del usuario y... cookies</h1>
+	<form action="" method="get" onsubmit="return validar()">
+		Nombre:* <input type="text" name="nombre"><br>
+		Apellidos* <input type="text" name="apellidos"><br>
+		DNI* <input type="text" name="dni"><br>
+		Sexo:*<br>
+		<input type="radio" name="sexo" value="hombre">Hombre<br>
+		<input type="radio" name="sexo" value="mujer">Mujer<br>
+		Fecha de nacimiento:* DD//MM//AAAA<input type="date" name="fechaNacimiento"><br>
+		Edad: <input type="number" min="18" max="100" size="2"><br>
+		Email:* <input type="text" name="email"><br>
+		Numero de telefono:* <input type="text" name="telefono"><br>
+		Incluir mi foto <input type="file" name="foto"><br>
+		<input type="checkbox" name="publicidad" value="enviarPublicidad">Enviar publicidad<br>
+		* Datos obligatorios<br>
+		<input type="submit" name="enviar" value="Enviar datos" id="envio" disabled>
+		<input type="reset" name="borrar" value="Borrar datos">
+	</form>
+</div>
+</body>
+</html>

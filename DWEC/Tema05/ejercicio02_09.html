@@ -6,9 +6,10 @@
 	<script type="text/javascript">
 	function validar(){
 		
-		if(validarCuenta() && validarCif() && validarNombre()){
+		if((validarCuenta() == true) && (validarCif()== true) && (validarNombre() == true)){
 			return true;
 		}else{
+			alert("Algo ha fallado")
 			return false;
 		}
 
@@ -22,9 +23,10 @@
 		if(cuenta == "" || cuenta == null){
 			alert("El campo cuenta es obligatorio");
 		}else if(expresionCuenta.test(cuenta)){
-			alert("hello");
+			return true;
 		}else{
-			alert("by");
+			alert("No tiene el formato correcto la cuenta");
+			return false;
 		}
 	}
 
@@ -39,8 +41,8 @@
 			
 			return true;
 		}else{
-			alert("nooo")
-			
+			alert("El cif no tiene el formato correcto")
+			return false;
 		}
 	}
 
@@ -74,8 +76,8 @@
 </head>
 <body>
 	<h1>Formulario validacion cuenta bancaria</h1>
-	<form action="" method="get" onsubmit="return validarNombre()">
-		<label for="numero">Numero de cuenta (cccc-cccc-cc-cccccccccc)</label> <input type="text" id="numeroCuenta" name="numero" ><br>
+	<form action="" method="get" onsubmit="return validar()">
+		<label for="numero">Numero de cuenta (cccc-cccc-cc-cccccccccc)</label> <input type="text" id="numeroCuenta" name="numero"><br>
 		<label for="cif">Número de CIF</label> <input type="text" id="numeroCif" name="cif"><br>
 		<label for="texto01">Nombre</label> <input type="text" id="nombre" name="texto01" ><br>
 		<label for="texto02">Apellidos</label> <input type="text" id="apellidos" name="texto02" disabled ><br>
