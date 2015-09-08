@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Añadir lista</title>
+	<style type="text/css">
+		.contenido{
+			margin: 0 auto;
+			width: 90%;
+			border: 5px dotted #fa4;
+			border-radius: 10px;
+			padding: 30px;
+		}
+	</style>
+	<script type="text/javascript">
+	function anadir(){
+		var nuevoLi = document.createElement("li");
+		var texto = document.getElementById("texto").value;
+		var contenido = document.createTextNode(texto);
+		nuevoLi.appendChild(contenido);
+		document.getElementById("lista").appendChild(nuevoLi);
+	}
+
+	function duplicar(){
+		var lista = document.getElementById("lista");
+		var nuevaLista = lista.cloneNode(true);
+		document.getElementById("duplicado").appendChild(nuevaLista);
+		
+		
+		
+	}
+	</script>
+</head>
+<body>
+	<div class="contenido">
+		<h1>Añade elementos a la lista y la lista entera</h1>
+		Texto para la lista: <input type="text" id="texto"><input type="button" onclick="anadir()" value="Añadir a la lista"><br>
+		<input type="button" value="Duplicar lista" onclick="duplicar()"><br>
+		<h3>Lista</h3>
+		<ul id="lista"></ul>
+		<h3>Duplicado</h3>
+		<span id="duplicado"></span>
+	</div>
+</body>
+</html>

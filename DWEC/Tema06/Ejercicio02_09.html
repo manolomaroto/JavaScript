@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Añadir elementos a una tabla</title>
+	<style type="text/css">
+		.container{
+			margin: 0 auto;
+			width: 70%;
+		}
+		table{
+			border: 3px solid black;
+		}
+		th, td{
+			border: 1px solid green;
+		}
+	</style>
+	<script type="text/javascript">
+	function mas(){
+		var nuevoTr = document.createElement("TR");
+		var nuevoTd = document.createElement("TD");
+		var nuevoTdBorrar = document.createElement("TD");
+		var nuevoTdClonar = document.createElement("TD");
+
+		var botonBorrar = document.createElement("INPUT");
+		var botonClonar = document.createElement("INPUT");
+
+		var texto = document.getElementById('texto').value;
+		var crearTexto = document.createTextNode(texto);
+		nuevoTd.appendChild(crearTexto);
+		nuevoTr.setAttribute("class",texto)
+		nuevoTr.appendChild(nuevoTd);
+
+		
+	
+
+
+		botonBorrar.setAttribute("type","button");
+		botonBorrar.setAttribute("value","Borrar");
+		botonBorrar.setAttribute("class",texto);
+		botonBorrar.setAttribute("onclick","borrar(this.className)");
+		nuevoTdBorrar.appendChild(botonBorrar);
+		nuevoTr.appendChild(nuevoTdBorrar);
+		
+
+		botonClonar.setAttribute("type","button");
+		botonClonar.setAttribute("value","Clonar");
+		botonClonar.setAttribute("class",texto);
+		botonClonar.setAttribute("onclick","clonar(this.className)");
+		nuevoTdClonar.appendChild(botonClonar);
+		nuevoTr.appendChild(nuevoTdClonar);
+		
+
+		document.getElementById("tabla").appendChild(nuevoTr);
+
+	}
+
+	function borrar(este){
+		var borrado = document.getElementsByClassName(este)[0];
+		borrado.parentNode.removeChild(borrado);
+	}
+
+	function clonar(este){
+		
+		var antiguaFila = document.getElementsByClassName(este)[0];
+		var nuevaFila = antiguaFila.cloneNode(true);
+		document.getElementById("tabla").appendChild(nuevaFila);
+	}
+	</script>
+</head>
+<body>
+
+<div class="container">
+	<h1>Añade elementos en la tabla</h1>
+	<p>
+		<input type="text" id="texto">
+		<input type="button" id="boton"	value="Añadir" onclick="mas()">
+	</p>
+	<table id="tabla">
+		<tr>
+			<th>Texto</th>
+			<th>Boton borrar</th>
+			<th>Boton clonar</th>
+		</tr>
+	</table>
+</div>
+	
+</body>
+</html>

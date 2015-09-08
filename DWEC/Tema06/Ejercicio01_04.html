@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Que Elementos hay</title>
+	<script type="text/javascript">
+
+		
+
+	function ordenar(){
+		obj_html = document.documentElement;
+		longitud = obj_html.childNodes.length;
+		
+		function recorrer(longitud){
+			
+			
+			for(var i = 0; i<longitud;i++){
+				if(obj_html.childNodes[0].length>0){
+					
+					recorrer(longitud-1)
+				}
+				alert(obj_html.childNodes[i].nodeType)
+			}
+		}
+		recorrer();
+	}
+
+	</script>
+</head>
+<body onload="ordenar()">
+	
+</body>
+</html>

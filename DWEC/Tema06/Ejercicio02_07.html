@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chicas y chicos</title>
+	<script type="text/javascript">
+	function pasar(){
+		var chicas = document.getElementById("chicas");
+		var chicos = document.getElementById("chicos");
+		
+		var nombreChicas = chicas.getElementsByTagName("li");
+		if(nombreChicas.length < 1){
+			document.getElementById("pasar").disabled = true;
+		}else{
+		var nombreChica = nombreChicas[nombreChicas.length-1].childNodes[0].nodeValue;
+		var chicaBorrar = nombreChicas[nombreChicas.length-1]
+		chicas.removeChild(chicaBorrar);
+		
+		var nuevoLi = document.createElement("LI");
+		var createText = document.createTextNode(nombreChica);
+		nuevoLi.appendChild(createText);
+		chicos.appendChild(nuevoLi);
+	}
+}
+	</script>
+	<style type="text/css">
+		.contenedor{
+			margin: 0 auto;
+			width: 70%;
+		}
+		.contenedorLista1{
+			float: left;
+		}
+		.contenedorLista2{
+			float: left;
+		}
+		.limpiar{
+			clear: both;
+		}
+		.botones{
+			margin: 0 auto;
+			width: 50%;
+		}
+	</style>
+</head>
+<body>
+
+<div class="contenedor">
+	<h1>Pasar chicas a la lista de chicos</h1>
+	<div class="contenedorLista1">
+		<ul id="chicas">
+			<li>Sara</li>
+			<li>Pepa</li>
+			<li>Felisa</li>
+			<li>Clara</li>
+			<li>Teresa</li>
+		</ul>
+	</div>
+	<div class="contenedorLista2">
+		<ul id="chicos">
+			<li>Fernando</li>
+			<li>Andres</li>
+			<li>Luis</li>
+			<li>Antonio</li>
+			<li>Eusebio</li>
+		</ul>
+	</div>
+	<div class="limpiar"></div>
+	<div class="botones">
+		<input type="button" value="Pasar" onclick="pasar()" id="pasar">
+	</div>
+</div>
+
+</body>
+</html>

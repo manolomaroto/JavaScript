@@ -1,0 +1,28 @@
+<!--
+    Autor=Laura Lozano Calvo
+    Fecha=21-ene-2013
+    Licencia=GPL v3
+    Versión=1.0
+    Descripción= Ejemplo 5 - Gestión de eventos utilizando DOM
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+        function ratonEncima(){
+             //Accedemos al valor del nodo que representa el div
+             document.getElementsByTagName("div")[0].childNodes[0].nodeValue="El RATÓN ESTÁ ENCIMA";
+        }
+        function ratonFuera(){
+            //Accedemos al valor del nodo que representa el div
+            document.getElementsByTagName("div")[0].childNodes[0].nodeValue="El RATÓN NO ESTÁ ENCIMA";
+        }
+    </script>
+  </head>
+  <body>
+      <div onmouseover="ratonEncima()" onmouseout="ratonFuera()">--DIV--</div>
+  </body>
+</html>
