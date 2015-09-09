@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Ejercicio 3 - Comprobar disponibilidad del login</title>
+
+        <script type="text/javascript">
+        function creaQueryString(){
+            var nombre = document.getElementById('login').value;
+            return "login=" + encodeURIComponent(nombre);
+        }
+
+        function comprobarDisponibilidad(){
+            var httpRequest;
+            var READY_STATE_COMPLETE = 4;
+            //No soportado en versiones 5.5 y 6 de IE
+            if (window.XMLHttpRequest){
+                httpRequest=new XMLHttpRequest();
+            }else if(window.ActiveXObject){
+                httpRequest=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            httpRequest.onreadystatechange = function(){
+                if(httpRequest.readyState == READY_STATE_COMPLETE){
+                    if(httpRequest.status == 200){
+                        var documento_xml = peticion_http.responseXML;
+                        var root = documento_xml.getElementsByTagName("respuesta")[0];
+
+                        var mensajes = root.getElementsByTagName("disponible")[0];
+                        var disponibilidad = mensajes.firstChild.nodeValue;
+                        
+                    }
+                }
+                
+            }
+
+            httpRequest.open('GET','compruebaDisponibilidadXML.php',true);
+            var peticion = creaQueryString();
+            httpRequest.send(peticion);
+
+        }
+        </script>
+    </head>
+
+    <body>
+        <h1>Comprobar disponibilidad del login</h1>
+        <form action="" method="post">
+            <label for="login">Nombre de usuario:</label>
+            <input type="text" name="login" id="login" />
+            <a id="comprobar" href="#" onclick="comprobarDisponibilidad()">Comprobar disponibilidad...</a>
+        </form>
+
+        <div id="disponibilidad"></div>
+
+    </body>
+</html>

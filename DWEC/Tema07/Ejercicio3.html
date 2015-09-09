@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Ejercicio 3 - Comprobar disponibilidad del login</title>
+
+        <script type="text/javascript">
+
+        function comprobarDisponibilidad(){
+        var httpRequest;
+
+        if(window.XMLHttpRequest){
+            httpRequest = new XMLHttpRequest();
+        }else if (window.ActiveXObject){
+            httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        httpRequest.onreadystatechange = function(){
+            if(httpRequest.readyState == 4){
+                if(httpRequest.status == 200){
+                    if(httpRequest.responseText == "si"){
+                        document.getElementById("disponibilidad").innerHTML = "El nombre " + nombre + " esta disponible";
+
+                }else{
+                    document.getElementById("disponibilidad").innerHTML = "El nombre " + nombre + " no esta disponible";
+                }
+            }
+        }
+    }
+        httpRequest.open('get','compruebaDisponibilidad.php',true);
+        httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        var peticion = creaQueryString();
+        httpRequest.send(null);
+        
+        }
+
+        function creaQueryString(){
+            nombre = document.getElementById("login").value;
+            return "nombre=" + encodeURIComponent(nombre);
+        }
+        </script>
+    </head>
+
+    <body>
+        <h1>Comprobar disponibilidad del login</h1>
+        <form action="" method="post">
+            <label for="login">Nombre de usuario:</label>
+            <input type="text" name="login" id="login" />
+            <a id="comprobar" href="#" onclick="comprobarDisponibilidad()">Comprobar disponibilidad...</a>
+        </form>
+
+        <div id="disponibilidad"></div>
+
+    </body>
+</html>

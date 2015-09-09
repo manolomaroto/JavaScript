@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Plantilla AJAX</title>
+	<script type="text/javascript">
+
+	var READY_STATE_UNINITIALIZED = 0;
+	var READY_STATE_LOADING = 1;
+	var READY_STATE_LOADED = 2;
+	var READY_STATE_INTERACTIVE = 3;
+	var READY_STATE_COMPLETE = 4;
+
+	var peticion_http;
+
+	function cargarContenido(url, metodo, funcion){
+		peticion_http = inicializa_xhr();
+
+		if(peticion_http){
+			peticion_http.onreadystatechange = funcion;
+			peticion_http.open(metodo, url, true);
+			var peticion = "json=" + crea_query_string();
+			peticion_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			peticion_http.send(peticion);
+		}
+	}
+
+	function inicializa_xhr(){
+		if(window.XMLHttpRequest){
+			return new XMLHttpRequest();
+		}else if(window.ActiveXObject){
+			return new ActiveXObject("Microsoft.XMLHTTP");
+		}
+	}
+
+
+	function muestraContenido(){
+		if(peticion_http.readyState == READY_STATE_COMPLETE){
+			if(peticion_http.status == 200){
+				var documentoJSON = peticion_http.responseText;
+				alert(documentoJSON)
+				var objeto_json = eval("("+documentoJSON+")");
+				var respuesta = objeto_json.respuesta;
+				alert(respuesta)
+				
+			}
+		}
+	}
+
+	function descargaArchivo(){
+		cargarContenido('compruebaDisponibilidadXML.php','POST', muestraContenido)
+	}
+
+	function crea_query_string() {
+                
+                
+                var login = document.getElementById("login").value;
+                
+                var JSONObject = new Object();
+                JSONObject.login = login;
+                var objeto_json = JSON.stringify(JSONObject);
+                return objeto_json;
+
+            }
+
+	
+	
+	</script>
+</head>
+<body>
+	<h1>Comprobar disponibilidad del login</h1>
+        <form action="" method="">
+            <label for="login">Nombre de usuario:</label>
+            <input type="text" name="login" id="login" />
+            <a id="comprobar" href="#" onclick="descargaArchivo()">Comprobar disponibilidad...</a>
+        </form>
+
+        <div id="disponibilidad"></div>
+</body>
+</html>
