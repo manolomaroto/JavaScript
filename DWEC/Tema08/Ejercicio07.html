@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('input').focus(function(){
+			$(this).css("background-color","#f00");
+		})
+		$('input').blur(function(){
+			$(this).css("background-color","#999");
+		})
+	})
+	</script>
+	<style type="text/css">
+		input{
+			background-color: #999;
+		}
+	</style>
+</head>
+<body>
+	<h2>Formulario de colores</h2>
+	<form method="" action="">
+		Nombre <input type="text" id="nombre"><br>
+		Apellidos <input type="text" id="apellidos"><br>
+		Telefono <input type="text" id="telefono">
+	</form>
+</body>
+</html>
