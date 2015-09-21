@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Plantilla</title>
+
+		<!-- Bootstrap CSS -->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<input type="button" value="Ver texto" id="boton1">
+				<input type="button" value="Ver texto y el HTML" id="boton2">
+				<input type="button" value="Ver texto del cuadro" id="boton3">
+				<input type="button" value="Ver enlace" id="boton4">
+			</div>
+			<div class="row">
+			<textarea >Hola
+				
+			</textarea>
+				<p id="texto">Tres anillos para los Reyes Elfos bajo el cielo.Siete para los
+Señores Enanos en casas de piedra. Nueve para los Hombres Mortales condenados a morir.Uno para el Señor
+Oscuro, sobre el trono oscuro. Un <a href="http://www.thehobbit.com/">Anillo</a> para gobernarlos a todos. Un anillo para encontrarlos, un Anillo para atraerlos a todos y atarlos en las tinieblas en la Tierra de Mordor donde se extienden las Sombras.</p>
+			</div>
+		</div>
+
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$("#boton1").click(function(){
+				alert($("#texto").text());
+			})
+			$("#boton2").click(function(){
+				alert($("#texto").html());
+			})
+			$("#boton3").click(function(){
+				alert($("textarea").text());
+			})
+			$("#boton4").click(function(){
+				alert($("a").attr("href"));
+			})
+		})
+		</script>
+	</body>
+</html>
